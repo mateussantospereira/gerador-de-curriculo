@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost:3002/public/css/style.css">
+    <title>Currículo PDF</title>
+</head>
+<body>
+    <h1>Currículo PDF</h1>
+    <p id="message" style="display: none;"></p>
+    <button id="button" onclick="gerar()">Gerar currículo</button>
+    <p id="carregando" style="display: none;">Carregando...</p>
+</body>
+
+<script>
+    const message = document.getElementById("message");
+    const button = document.getElementById("button");
+    const carregando = document.getElementById("carregando");
+
+    const gerar = async () => {
+        carregando.style.display = "block";
+        button.style.display = "none";
+
+        const response = await fetch("/create");
+        const json = await response.json();
+
+        carregando.style.display = "none";
+        button.style.display = "block";
+
+        if (json.status == 200) {
+            window.open(json.data);
+        } else {
+            message.innerHTML = json.message;
+            messge.style.display = "block";
+        }
+    };
+</script>
+
+</html>
