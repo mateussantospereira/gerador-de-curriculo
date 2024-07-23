@@ -1,4 +1,4 @@
-## Currículo PDF
+## Gerador de currículo PDF
 
 Este é uma aplicação para o geramento automático de currículo. O currículo PDF que será gerado é baseado em um arquivo HTML com uma estilização em CSS.
 
