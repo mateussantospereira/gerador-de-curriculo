@@ -17,11 +17,18 @@ class pdfController {
                     response(res, 400, true, "Erro ao criar arquivo");
                 }
 
-                console.log(file)
+                let local;
 
-                let local = file.filename.split("\\");
+                if (file.filename.includes("\\")) {
+                    local = file.filename.split("\\");
+                } else {
+                    local = file.filename.split("/");
+                }
+                
                 let paths = local.length - 3;
                 let url = `/${local[paths]}/${local[paths+1]}/${local[paths+2]}`;
+
+                console.log()
 
                 response(res, 200, false, "Arquivo criado com êxito.", url);
             });
